@@ -3,9 +3,11 @@ package ua.ppadalka.webstore.account.model;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.Entity;
 import java.io.Serializable;
 import java.util.Collection;
 
+@Entity
 public class Account implements UserDetails, Serializable {
 
     @Override
