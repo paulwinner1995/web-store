@@ -1,8 +1,8 @@
-package ua.ppadalka.webstore.customer.service;
+package ua.ppadalka.webstore.profile.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ua.ppadalka.webstore.customer.repository.ProfileRepository;
+import ua.ppadalka.webstore.profile.repository.ProfileRepository;
 
 @Service
 public class ProfileServiceImpl implements ProfileService {

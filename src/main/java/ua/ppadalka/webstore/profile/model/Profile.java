@@ -1,4 +1,4 @@
-package ua.ppadalka.webstore.customer.model;
+package ua.ppadalka.webstore.profile.model;
 
 import ua.ppadalka.webstore.account.model.Account;
 
