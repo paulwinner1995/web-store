@@ -37,10 +37,10 @@ public class Profile implements Serializable {
     @Column(name = "LAST_NAME", nullable = false)
     private String lastName;
 
-    @Column(name = "ADDRESS")
+    @Column(name = "ADDRESS", nullable = false)
     private String address;
 
-    @Column(name = "PHONE_NUMBER")
+    @Column(name = "PHONE_NUMBER", nullable = false)
     private String phoneNumber;
 
     @OneToOne
