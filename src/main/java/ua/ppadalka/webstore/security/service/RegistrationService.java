@@ -1,7 +1,8 @@
 package ua.ppadalka.webstore.security.service;
 
-import org.springframework.stereotype.Service;
+import ua.ppadalka.webstore.security.dto.RegistrationForm;
 
-@Service
 public interface RegistrationService {
+
+    void registerCustomer(RegistrationForm registrationForm);
 }

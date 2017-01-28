@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.ppadalka.webstore.account.service.AccountService;
 import ua.ppadalka.webstore.profile.service.ProfileService;
+import ua.ppadalka.webstore.security.dto.RegistrationForm;
 
 @Service
 public class RegistrationServiceImpl implements RegistrationService {
@@ -19,4 +20,7 @@ public class RegistrationServiceImpl implements RegistrationService {
         this.accountService = accountService;
         this.profileService = profileService;
     }
+
+    @Override
+    public void registerCustomer(RegistrationForm registrationForm) {}
 }
