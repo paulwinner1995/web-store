@@ -1,5 +1,7 @@
 package ua.ppadalka.webstore.product.model;
 
+import ua.ppadalka.webstore.common.converter.LocalDateTimeConverter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -36,6 +38,7 @@ public class Product implements Serializable {
     private Integer amount;
 
     @Column(name = "VERSION", nullable = false)
+    @Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime version;
 
     @Column(name = "DESCRIPTION")

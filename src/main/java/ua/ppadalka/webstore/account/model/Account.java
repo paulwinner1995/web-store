@@ -3,14 +3,9 @@ package ua.ppadalka.webstore.account.model;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import ua.ppadalka.webstore.common.converter.LocalDateTimeConverter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Collection;
@@ -47,6 +42,7 @@ public class Account implements UserDetails, Serializable {
     @Column(name = "ROLE", nullable = false)
     private Role role;
 
+    @Convert(converter = LocalDateTimeConverter.class)
     @Column(name = "REGISTRATION_DATE", nullable = false)
     private LocalDateTime registrationDate;
 

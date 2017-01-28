@@ -1,6 +1,9 @@
 package ua.ppadalka.webstore.order.model;
 
+import ua.ppadalka.webstore.common.converter.LocalDateTimeConverter;
+
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,9 +35,11 @@ public class OrderStatus implements Serializable {
     private OrderStatusType type;
 
     @Column(name = "START_DATE")
+    @Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime startDate;
 
     @Column(name = "END_DATE")
+    @Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime endDate;
 
     public OrderStatus() {

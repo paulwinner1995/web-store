@@ -1,5 +1,6 @@
 package ua.ppadalka.webstore.order.model;
 
+import ua.ppadalka.webstore.common.converter.LocalDateTimeConverter;
 import ua.ppadalka.webstore.profile.model.Profile;
 
 import javax.persistence.*;
@@ -28,9 +29,11 @@ public class Order implements Serializable {
     private String code;
 
     @Column(name = "START_DATE", nullable = false)
+    @Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime startDate;
 
     @Column(name = "END_DATE")
+    @Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime endDate;
 
     @ManyToOne()

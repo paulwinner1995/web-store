@@ -1,6 +1,9 @@
 package ua.ppadalka.webstore.product.model;
 
+import ua.ppadalka.webstore.common.converter.LocalDateTimeConverter;
+
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,6 +36,7 @@ public class ProductCategory implements Serializable {
     private String name;
 
     @Column(name = "VERSION", nullable = false)
+    @Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime version;
 
     @JoinColumn(
