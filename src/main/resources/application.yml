@@ -1,0 +1,9 @@
+spring:
+  jpa:
+    hibernate.ddl-auto: validate
+    show-sql: false
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/web_store_db
+    username: webstore2017
+    password: july2017
