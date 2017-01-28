@@ -9,9 +9,18 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "ORDER")
+@SequenceGenerator(
+        name = "ORDER_ID_SEQUENCE_GENERATOR",
+        sequenceName = "ORDER_ID_SEQUENCE",
+        allocationSize = 1
+)
 public class Order implements Serializable {
 
     @Id
+    @GeneratedValue(
+            generator = "ORDER_ID_SEQUENCE_GENERATOR",
+            strategy = GenerationType.SEQUENCE
+    )
     @Column(name = "ORDER_ID")
     private Long id;
 
