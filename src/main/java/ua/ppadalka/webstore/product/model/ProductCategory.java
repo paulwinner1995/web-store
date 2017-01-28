@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
@@ -28,8 +29,11 @@ public class ProductCategory implements Serializable {
     @Column(name = "PRODUCT_CATEGORY_ID")
     private Long id;
 
-    @Column(name = "NAME")
+    @Column(name = "NAME", nullable = false)
     private String name;
+
+    @Column(name = "VERSION", nullable = false)
+    private LocalDateTime version;
 
     @JoinColumn(
             name = "PARENT_ID",
@@ -88,5 +92,9 @@ public class ProductCategory implements Serializable {
 
     public void setParent(ProductCategory parent) {
         this.parent = parent;
+    }
+
+    public LocalDateTime getVersion() {
+        return version;
     }
 }
