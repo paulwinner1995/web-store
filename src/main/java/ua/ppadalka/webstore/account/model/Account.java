@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Objects;
@@ -33,14 +34,24 @@ public class Account implements UserDetails, Serializable {
     @Column(name = "ACCOUNT_ID")
     private Long id;
 
-    @Column(name = "USERNAME")
+    @Column(
+            name = "USERNAME",
+            unique = true,
+            nullable = false
+    )
     private String username;
 
-    @Column(name = "PASSWORD")
+    @Column(name = "PASSWORD", nullable = false)
     private String password;
 
-    @Column(name = "ROLE")
+    @Column(name = "ROLE", nullable = false)
     private Role role;
+
+    @Column(name = "REGISTRATION_DATE", nullable = false)
+    private LocalDateTime registrationDate;
+
+    @Column(name = "VERSION", nullable = false)
+    private LocalDateTime version;
 
     public Account(String username, String password, Role role) {
         this.username = username;
@@ -81,6 +92,14 @@ public class Account implements UserDetails, Serializable {
 
     public Role getRole() {
         return role;
+    }
+
+    public LocalDateTime getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public LocalDateTime getVersion() {
+        return version;
     }
 
     @Override
