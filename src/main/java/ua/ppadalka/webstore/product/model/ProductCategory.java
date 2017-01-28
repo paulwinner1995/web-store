@@ -9,10 +9,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -39,6 +42,7 @@ public class ProductCategory implements Serializable {
     @Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime version;
 
+    @ManyToOne
     @JoinColumn(
             name = "PARENT_ID",
             referencedColumnName = "PRODUCT_CATEGORY_ID"
