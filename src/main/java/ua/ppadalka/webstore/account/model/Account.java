@@ -4,6 +4,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import ua.ppadalka.webstore.common.converter.LocalDateTimeConverter;
+import ua.ppadalka.webstore.common.util.OptionalUtils;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Objects;
+import java.util.Optional;
 
 @Entity
 @Table(name = "ACCOUNT")
@@ -49,17 +51,10 @@ public class Account implements UserDetails, Serializable {
     @Column(name = "VERSION", nullable = false)
     private LocalDateTime version;
 
-    public Account(
-            String username,
-            String password,
-            Role role,
-            LocalDateTime registrationDate)
-    {
-        this.username = username;
-        this.password = password;
-        this.role = role;
-        this.registrationDate = registrationDate;
-        this.version = registrationDate;
+    public Account() {}
+
+    public static AccountBuilder builder() {
+        return new AccountBuilder();
     }
 
     @Override
@@ -130,5 +125,53 @@ public class Account implements UserDetails, Serializable {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public static class AccountBuilder {
+        private String username;
+        private String password;
+        private Role role;
+        private LocalDateTime registrationDate;
+        private LocalDateTime version;
+
+        private AccountBuilder() {}
+
+        public Account build() {
+            Account account = new Account();
+
+            account.username = OptionalUtils.orElseDefault(username, account.username);
+            account.password = OptionalUtils.orElseDefault(password, account.password);
+            account.role = OptionalUtils.orElseDefault(role, account.role);
+            account.registrationDate = OptionalUtils
+                    .orElseDefault(registrationDate, account.registrationDate);
+            account.version = OptionalUtils.orElseDefault(version, account.version);
+
+            return account;
+        }
+
+        public AccountBuilder username(String username) {
+            this.username = username;
+            return this;
+        }
+
+        public AccountBuilder password(String password) {
+            this.password = password;
+            return this;
+        }
+
+        public AccountBuilder role(Role role) {
+            this.role = role;
+            return this;
+        }
+
+        public AccountBuilder registrationDate(LocalDateTime registrationDate) {
+            this.registrationDate = registrationDate;
+            return this;
+        }
+
+        public AccountBuilder version(LocalDateTime version) {
+            this.version = version;
+            return this;
+        }
     }
 }
