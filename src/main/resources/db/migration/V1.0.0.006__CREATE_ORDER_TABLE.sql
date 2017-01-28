@@ -1,8 +1,8 @@
 CREATE TABLE "order" (
   order_id   BIGINT,
   code       VARCHAR(255) NOT NULL,
-  start_date VARCHAR(255) NOT NULL,
-  end_date   VARCHAR(255),
+  start_date TIMESTAMP    NOT NULL,
+  end_date   TIMESTAMP,
   profile_id BIGINT,
   
   PRIMARY KEY (order_id),
