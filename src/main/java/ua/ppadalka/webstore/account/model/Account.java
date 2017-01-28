@@ -53,15 +53,22 @@ public class Account implements UserDetails, Serializable {
     @Column(name = "VERSION", nullable = false)
     private LocalDateTime version;
 
-    public Account(String username, String password, Role role) {
+    public Account(
+            String username,
+            String password,
+            Role role,
+            LocalDateTime registrationDate)
+    {
         this.username = username;
         this.password = password;
         this.role = role;
+        this.registrationDate = registrationDate;
+        this.version = registrationDate;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(username, role);
+        return Objects.hash(username, role, registrationDate);
     }
 
     @Override
@@ -73,7 +80,8 @@ public class Account implements UserDetails, Serializable {
         Account account = (Account) obj;
 
         return Objects.equals(username, account.username) &&
-                Objects.equals(role, account.role);
+                Objects.equals(role, account.role) &&
+                Objects.equals(registrationDate, account.registrationDate);
     }
 
     public Long getId() {
