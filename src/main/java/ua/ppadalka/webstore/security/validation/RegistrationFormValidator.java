@@ -10,7 +10,7 @@ public class RegistrationFormValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return false;
+        return RegistrationForm.class.equals(clazz);
     }
 
     @Override
