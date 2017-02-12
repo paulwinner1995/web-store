@@ -1,9 +1,10 @@
 package ua.ppadalka.webstore.account.service;
 
+import org.springframework.security.core.userdetails.UserDetailsService;
 import ua.ppadalka.webstore.account.model.Account;
 import ua.ppadalka.webstore.account.model.Role;
 
-public interface AccountService {
+public interface AccountService extends UserDetailsService {
 
     /**
      * Creates account with given username, password and role
