@@ -1,15 +1,15 @@
 package ua.ppadalka.webstore.profile.dto;
 
-public class ProfileDTO {
+public class ProfileDto {
     private String firstName;
     private String lastName;
     private String address;
     private String phoneNumber;
 
-    public ProfileDTO() {}
+    public ProfileDto() {}
 
-    public static ProfileDTOBuilder builder() {
-        return new ProfileDTOBuilder();
+    public static ProfileDtoBuilder builder() {
+        return new ProfileDtoBuilder();
     }
 
     public String getFirstName() {
@@ -28,16 +28,16 @@ public class ProfileDTO {
         return phoneNumber;
     }
 
-    public static class ProfileDTOBuilder {
+    public static class ProfileDtoBuilder {
         private String firstName;
         private String lastName;
         private String address;
         private String phoneNumber;
 
-        private ProfileDTOBuilder() {}
+        private ProfileDtoBuilder() {}
 
-        public ProfileDTO build() {
-            ProfileDTO dto = new ProfileDTO();
+        public ProfileDto build() {
+            ProfileDto dto = new ProfileDto();
 
             dto.firstName = firstName;
             dto.lastName = lastName;
@@ -47,22 +47,22 @@ public class ProfileDTO {
             return dto;
         }
 
-        public ProfileDTOBuilder firstName(String firstName) {
+        public ProfileDtoBuilder firstName(String firstName) {
             this.firstName = firstName;
             return this;
         }
 
-        public ProfileDTOBuilder lastName(String lastName) {
+        public ProfileDtoBuilder lastName(String lastName) {
             this.lastName = lastName;
             return this;
         }
 
-        public ProfileDTOBuilder address(String address) {
+        public ProfileDtoBuilder address(String address) {
             this.address = address;
             return this;
         }
 
-        public ProfileDTOBuilder phoneNumber(String phoneNumber) {
+        public ProfileDtoBuilder phoneNumber(String phoneNumber) {
             this.phoneNumber = phoneNumber;
             return this;
         }

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ua.ppadalka.webstore.account.model.Account;
 import ua.ppadalka.webstore.account.service.AccountService;
-import ua.ppadalka.webstore.profile.dto.ProfileDTO;
+import ua.ppadalka.webstore.profile.dto.ProfileDto;
 import ua.ppadalka.webstore.profile.service.ProfileService;
 import ua.ppadalka.webstore.registration.dto.RegistrationForm;
 
@@ -37,13 +37,13 @@ public class RegistrationServiceImpl implements RegistrationService {
         String address = registrationForm.getAddress();
         String phoneNumber = registrationForm.getPhoneNumber();
 
-        ProfileDTO profileDTO = ProfileDTO.builder()
+        ProfileDto profileDto = ProfileDto.builder()
                 .firstName(firstName)
                 .lastName(lastName)
                 .address(address)
                 .phoneNumber(phoneNumber)
                 .build();
 
-        profileService.create(profileDTO, account);
+        profileService.create(profileDto, account);
     }
 }
