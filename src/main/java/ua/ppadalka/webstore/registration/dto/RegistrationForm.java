@@ -1,4 +1,4 @@
-package ua.ppadalka.webstore.security.dto;
+package ua.ppadalka.webstore.registration.dto;
 
 public class RegistrationForm {
     private String username;

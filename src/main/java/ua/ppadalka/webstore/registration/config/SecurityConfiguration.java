@@ -1,4 +1,4 @@
-package ua.ppadalka.webstore.security.config;
+package ua.ppadalka.webstore.registration.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

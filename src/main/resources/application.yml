@@ -7,3 +7,5 @@ spring:
     url: jdbc:postgresql://localhost:5432/web_store_db
     username: webstore2017
     password: july2017
+server:
+  port: 8081

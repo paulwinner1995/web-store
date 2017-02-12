@@ -1,4 +1,4 @@
-package ua.ppadalka.webstore.security.service;
+package ua.ppadalka.webstore.registration.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -7,7 +7,7 @@ import ua.ppadalka.webstore.account.model.Account;
 import ua.ppadalka.webstore.account.service.AccountService;
 import ua.ppadalka.webstore.profile.dto.ProfileDTO;
 import ua.ppadalka.webstore.profile.service.ProfileService;
-import ua.ppadalka.webstore.security.dto.RegistrationForm;
+import ua.ppadalka.webstore.registration.dto.RegistrationForm;
 
 import static ua.ppadalka.webstore.account.model.Role.CUSTOMER;
 
@@ -18,10 +18,8 @@ public class RegistrationServiceImpl implements RegistrationService {
     private ProfileService profileService;
 
     @Autowired
-    public RegistrationServiceImpl(
-            AccountService accountService,
-            ProfileService profileService
-    ) {
+    public RegistrationServiceImpl(AccountService accountService,
+                                   ProfileService profileService) {
         this.accountService = accountService;
         this.profileService = profileService;
     }

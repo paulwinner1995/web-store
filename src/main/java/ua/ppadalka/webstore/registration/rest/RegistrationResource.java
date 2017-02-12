@@ -1,4 +1,4 @@
-package ua.ppadalka.webstore.security.rest;
+package ua.ppadalka.webstore.registration.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ua.ppadalka.webstore.security.dto.RegistrationForm;
-import ua.ppadalka.webstore.security.service.RegistrationService;
-import ua.ppadalka.webstore.security.validation.RegistrationFormValidator;
+import ua.ppadalka.webstore.registration.dto.RegistrationForm;
+import ua.ppadalka.webstore.registration.service.RegistrationService;
+import ua.ppadalka.webstore.registration.validation.RegistrationFormValidator;
 
 import javax.validation.Valid;
 

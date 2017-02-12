@@ -1,9 +1,9 @@
-package ua.ppadalka.webstore.security.validation;
+package ua.ppadalka.webstore.registration.validation;
 
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-import ua.ppadalka.webstore.security.dto.RegistrationForm;
+import ua.ppadalka.webstore.registration.dto.RegistrationForm;
 
 @Component
 public class RegistrationFormValidator implements Validator {
