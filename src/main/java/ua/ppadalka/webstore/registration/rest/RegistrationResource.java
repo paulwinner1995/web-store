@@ -15,7 +15,7 @@ import ua.ppadalka.webstore.registration.validation.RegistrationFormValidator;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping(path = "/registration")
+@RequestMapping(path = "/api/registration")
 public class RegistrationResource {
 
     private RegistrationService registrationService;
