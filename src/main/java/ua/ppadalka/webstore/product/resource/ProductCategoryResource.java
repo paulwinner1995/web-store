@@ -5,6 +5,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ua.ppadalka.webstore.product.dto.ProductCategoryDto;
@@ -36,5 +38,11 @@ public class ProductCategoryResource {
     public ResponseEntity<List<ProductCategoryDto>> findSubCategories(@PathVariable(name = "category") String category) {
         List<ProductCategoryDto> subCategories = productCategoryService.findSubCategories(category);
         return ResponseEntity.ok(subCategories);
+    }
+
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<ProductCategoryDto> createCategory(@RequestBody ProductCategoryDto category) {
+        ProductCategoryDto newCategory = productCategoryService.create(category);
+        return ResponseEntity.ok(newCategory);
     }
 }

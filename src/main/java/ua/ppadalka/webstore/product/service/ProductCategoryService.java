@@ -23,4 +23,6 @@ public interface ProductCategoryService {
      * @return - {@link List} of categories which are subcategories of given category
      */
     List<ProductCategoryDto> findSubCategories(String category);
+
+    ProductCategoryDto create(ProductCategoryDto category);
 }

@@ -103,4 +103,8 @@ public class ProductCategory implements Serializable {
     public LocalDateTime getVersion() {
         return version;
     }
+
+    public void setVersion(LocalDateTime version) {
+        this.version = version;
+    }
 }

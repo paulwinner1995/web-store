@@ -9,4 +9,8 @@ public class ProductCategoryDto {
     public ProductCategoryDto(String name) {
         this.name = name;
     }
+
+    public String getName() {
+        return name;
+    }
 }
