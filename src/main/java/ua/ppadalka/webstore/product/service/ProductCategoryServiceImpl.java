@@ -3,7 +3,7 @@ package ua.ppadalka.webstore.product.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.ppadalka.webstore.product.dto.ProductCategoryDto;
-import ua.ppadalka.webstore.product.dto.ProductDetailDto;
+import ua.ppadalka.webstore.product.mapper.ProductCategoryMapper;
 import ua.ppadalka.webstore.product.model.ProductCategory;
 import ua.ppadalka.webstore.product.repository.ProductCategoryRepository;
 
@@ -17,18 +17,21 @@ import java.util.stream.StreamSupport;
 public class ProductCategoryServiceImpl implements ProductCategoryService {
 
     private ProductCategoryRepository productCategoryRepository;
+    private ProductCategoryMapper productCategoryMapper;
 
     @Autowired
-    public ProductCategoryServiceImpl(ProductCategoryRepository productCategoryRepository) {
+    public ProductCategoryServiceImpl(ProductCategoryRepository productCategoryRepository,
+                                      ProductCategoryMapper productCategoryMapper) {
         this.productCategoryRepository = productCategoryRepository;
+        this.productCategoryMapper = productCategoryMapper;
     }
 
     @Override
     public List<ProductCategoryDto> findBasicCategories() {
-        // TODO: Temporary implementation should be refactored
-        return StreamSupport.stream(productCategoryRepository.findAll().spliterator(), false)
-                .map(ProductCategory::getName)
-                .map(ProductCategoryDto::new)
+        Iterable<ProductCategory> productCategories = productCategoryRepository.findAll();
+
+        return StreamSupport.stream(productCategories.spliterator(), false)
+                .map(productCategoryMapper::toDto)
                 .collect(Collectors.toList());
     }
 
@@ -39,10 +42,10 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 
     @Override
     public ProductCategoryDto create(ProductCategoryDto category) {
-        // TODO: Temporary implementation should be refactored
-        ProductCategory productCategory = new ProductCategory(category.getName());
+        ProductCategory productCategory = productCategoryMapper.toModel(category);
+
         productCategory.setVersion(LocalDateTime.now());
 
-        return new ProductCategoryDto(productCategoryRepository.save(productCategory).getName());
+        return productCategoryMapper.toDto(productCategoryRepository.save(productCategory));
     }
 }

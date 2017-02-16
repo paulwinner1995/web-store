@@ -6,11 +6,11 @@ public class ProductCategoryDto {
 
     public ProductCategoryDto() {}
 
-    public ProductCategoryDto(String name) {
-        this.name = name;
-    }
-
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
