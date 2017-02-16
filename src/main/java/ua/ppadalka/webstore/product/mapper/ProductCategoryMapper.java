@@ -9,12 +9,12 @@ import ua.ppadalka.webstore.product.model.ProductCategory;
 @Mapper
 public interface ProductCategoryMapper {
 
-    @Mappings(value = {
+    @Mappings({
             @Mapping(source = "name", target = "name"),
     })
     ProductCategoryDto toDto(ProductCategory productCategory);
 
-    @Mappings(value = {
+    @Mappings({
             @Mapping(source = "name", target = "name")
     })
     ProductCategory toModel(ProductCategoryDto productCategoryDto);
