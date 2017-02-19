@@ -1,6 +1,6 @@
 CREATE TABLE product_category (
   product_category_id BIGINT,
-  name                VARCHAR(255) NOT NULL,
+  name                VARCHAR(255) NOT NULL UNIQUE,
   version             TIMESTAMP    NOT NULL,
   parent_id BIGINT,
   

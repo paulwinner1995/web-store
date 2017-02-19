@@ -33,7 +33,7 @@ public class ProductCategory implements Serializable {
     @Column(name = "PRODUCT_CATEGORY_ID")
     private Long id;
 
-    @Column(name = "NAME", nullable = false)
+    @Column(name = "NAME", unique = true, nullable = false)
     private String name;
 
     @Column(name = "VERSION", nullable = false)
@@ -48,7 +48,8 @@ public class ProductCategory implements Serializable {
     private ProductCategory parent;
 
 
-    public ProductCategory() {}
+    public ProductCategory() {
+    }
 
     public ProductCategory(String name) {
         this.name = name;
