@@ -15,5 +15,7 @@ public interface ProductService {
      */
     Page<ProductDto> findProductPage(Pageable pageable);
 
+    ProductInfoDto findProductInfo(String xref);
+
     ProductInfoDto create(ProductInfoDto productInfo);
 }

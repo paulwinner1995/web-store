@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,13 +29,16 @@ public class ProductResource {
 
     @GetMapping
     public ResponseEntity<Page<ProductDto>> findProductPage(Pageable pageable) {
-        Page<ProductDto> page = productService.findProductPage(pageable);
-        return ResponseEntity.ok(page);
+        return ResponseEntity.ok(productService.findProductPage(pageable));
     }
 
     @PostMapping
     public ResponseEntity<ProductInfoDto> create(@Valid @RequestBody ProductInfoDto productInfo) {
-        ProductInfoDto productInfoDto = productService.create(productInfo);
-        return ResponseEntity.ok(productInfoDto);
+        return ResponseEntity.ok(productService.create(productInfo));
+    }
+
+    @GetMapping(path = "/{xref}")
+    public ResponseEntity<ProductInfoDto> findProductInfo(@PathVariable(name = "xref") String xref) {
+        return ResponseEntity.ok(productService.findProductInfo(xref));
     }
 }
