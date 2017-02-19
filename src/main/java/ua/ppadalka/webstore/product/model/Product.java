@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -50,6 +51,9 @@ public class Product implements Serializable {
             referencedColumnName = "PRODUCT_CATEGORY_ID"
     )
     private ProductCategory productCategory;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ProductDetail> productDetails;
 
     public Product() {}
 
@@ -128,5 +132,13 @@ public class Product implements Serializable {
 
     public void setProductCategory(ProductCategory productCategory) {
         this.productCategory = productCategory;
+    }
+
+    public List<ProductDetail> getProductDetails() {
+        return productDetails;
+    }
+
+    public void setProductDetails(List<ProductDetail> productDetails) {
+        this.productDetails = productDetails;
     }
 }
