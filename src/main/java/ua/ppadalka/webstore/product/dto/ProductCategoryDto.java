@@ -1,7 +1,10 @@
 package ua.ppadalka.webstore.product.dto;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 public class ProductCategoryDto {
 
+    @NotBlank
     private String name;
 
     public ProductCategoryDto() {}
