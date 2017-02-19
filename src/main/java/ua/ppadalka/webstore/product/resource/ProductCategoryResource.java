@@ -34,14 +34,14 @@ public class ProductCategoryResource {
         return ResponseEntity.ok(productCategoryService.findBasicCategories());
     }
 
-    @GetMapping(path = "/{category}")
-    public ResponseEntity<List<ProductCategoryDto>> findSubCategories(@PathVariable(name = "category") String category) {
-        return ResponseEntity.ok(productCategoryService.findSubCategories(category));
-    }
-
     @PostMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<ProductCategoryDto> createCategory(@RequestBody ProductCategoryDto category) {
         return ResponseEntity.ok(productCategoryService.create(category));
+    }
+
+    @GetMapping(path = "/{category}")
+    public ResponseEntity<List<ProductCategoryDto>> findSubCategories(@PathVariable(name = "category") String category) {
+        return ResponseEntity.ok(productCategoryService.findSubCategories(category));
     }
 
     @PostMapping(path = "/{category}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
