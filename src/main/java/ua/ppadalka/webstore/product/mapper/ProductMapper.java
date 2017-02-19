@@ -7,7 +7,7 @@ import ua.ppadalka.webstore.product.dto.ProductDto;
 import ua.ppadalka.webstore.product.dto.ProductInfoDto;
 import ua.ppadalka.webstore.product.model.Product;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface ProductMapper {
 
     Product toModel(ProductInfoDto productInfo);

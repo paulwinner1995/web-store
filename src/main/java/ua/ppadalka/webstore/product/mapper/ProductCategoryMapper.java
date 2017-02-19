@@ -6,7 +6,7 @@ import org.mapstruct.Mappings;
 import ua.ppadalka.webstore.product.dto.ProductCategoryDto;
 import ua.ppadalka.webstore.product.model.ProductCategory;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface ProductCategoryMapper {
 
     @Mappings({
