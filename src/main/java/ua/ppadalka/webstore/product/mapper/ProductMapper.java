@@ -7,10 +7,7 @@ import ua.ppadalka.webstore.product.dto.ProductDto;
 import ua.ppadalka.webstore.product.dto.ProductInfoDto;
 import ua.ppadalka.webstore.product.model.Product;
 
-@Mapper(
-        componentModel = "spring",
-        uses = { ProductCategoryMapper.class }
-)
+@Mapper(componentModel = "spring", uses = { ProductCategoryMapper.class })
 public interface ProductMapper {
 
     @Mappings({
