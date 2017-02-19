@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ua.ppadalka.webstore.product.dto.ProductCategoryDto;
 import ua.ppadalka.webstore.product.service.ProductCategoryService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -30,19 +31,16 @@ public class ProductCategoryResource {
 
     @GetMapping
     public ResponseEntity<List<ProductCategoryDto>> findBasicCategories() {
-        List<ProductCategoryDto> categories = productCategoryService.findBasicCategories();
-        return ResponseEntity.ok(categories);
+        return ResponseEntity.ok(productCategoryService.findBasicCategories());
     }
 
     @GetMapping(path = "/{category}")
     public ResponseEntity<List<ProductCategoryDto>> findSubCategories(@PathVariable(name = "category") String category) {
-        List<ProductCategoryDto> subCategories = productCategoryService.findSubCategories(category);
-        return ResponseEntity.ok(subCategories);
+        return ResponseEntity.ok(productCategoryService.findSubCategories(category));
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<ProductCategoryDto> createCategory(@RequestBody ProductCategoryDto category) {
-        ProductCategoryDto newCategory = productCategoryService.create(category);
-        return ResponseEntity.ok(newCategory);
+        return ResponseEntity.ok(productCategoryService.create(category));
     }
 }
