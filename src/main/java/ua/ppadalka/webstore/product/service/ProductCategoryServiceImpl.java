@@ -41,6 +41,11 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
     }
 
     @Override
+    public ProductCategory findCategoryByName(String name) {
+        return productCategoryRepository.findByName(name);
+    }
+
+    @Override
     public ProductCategoryDto create(ProductCategoryDto category) {
         ProductCategory productCategory = productCategoryMapper.toModel(category);
 

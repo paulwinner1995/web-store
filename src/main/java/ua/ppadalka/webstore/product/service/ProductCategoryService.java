@@ -1,6 +1,7 @@
 package ua.ppadalka.webstore.product.service;
 
 import ua.ppadalka.webstore.product.dto.ProductCategoryDto;
+import ua.ppadalka.webstore.product.model.ProductCategory;
 
 import java.util.List;
 
@@ -23,6 +24,8 @@ public interface ProductCategoryService {
      * @return - {@link List} of categories which are subcategories of given category
      */
     List<ProductCategoryDto> findSubCategories(String category);
+
+    ProductCategory findCategoryByName(String name);
 
     ProductCategoryDto create(ProductCategoryDto category);
 }
