@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ua.ppadalka.webstore.product.dto.ProductDto;
@@ -30,7 +31,7 @@ public class ProductResource {
     }
 
     @PostMapping
-    public ResponseEntity<ProductInfoDto> create(ProductInfoDto productInfo) {
+    public ResponseEntity<ProductInfoDto> create(@RequestBody ProductInfoDto productInfo) {
         ProductInfoDto productInfoDto = productService.create(productInfo);
         return ResponseEntity.ok(productInfoDto);
     }
