@@ -6,8 +6,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+`import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "PRODUCT")
@@ -57,9 +59,11 @@ public class Product implements Serializable {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    private List<ProductDetail> productDetails;
+    private Set<ProductDetail> productDetails;
 
-    public Product() {}
+    public Product() {
+        this.productDetails = new HashSet<>();
+    }
 
     @Override
     public int hashCode() {
@@ -138,11 +142,11 @@ public class Product implements Serializable {
         this.productCategory = productCategory;
     }
 
-    public List<ProductDetail> getProductDetails() {
+    public Set<ProductDetail> getProductDetails() {
         return productDetails;
     }
 
-    public void setProductDetails(List<ProductDetail> productDetails) {
-        this.productDetails = productDetails;
+    public void addProductDetail(ProductDetail productDetail) {
+        productDetails.add(productDetail);
     }
 }
