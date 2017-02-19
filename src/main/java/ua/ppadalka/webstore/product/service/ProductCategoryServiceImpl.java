@@ -3,6 +3,7 @@ package ua.ppadalka.webstore.product.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.ppadalka.webstore.product.dto.ProductCategoryDto;
+import ua.ppadalka.webstore.product.exception.ProductCategoryNotFoundException;
 import ua.ppadalka.webstore.product.mapper.ProductCategoryMapper;
 import ua.ppadalka.webstore.product.model.ProductCategory;
 import ua.ppadalka.webstore.product.repository.ProductCategoryRepository;
@@ -53,5 +54,18 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
         productCategory.setVersion(LocalDateTime.now());
 
         return productCategoryMapper.toDto(productCategoryRepository.save(productCategory));
+    }
+
+    @Override
+    public ProductCategoryDto createSub(String parentName, ProductCategoryDto category) {
+        ProductCategory parentCategory = findCategoryByName(parentName)
+                .orElseThrow(() -> new ProductCategoryNotFoundException(parentName));
+
+        ProductCategory newCategory = productCategoryMapper.toModel(category);
+
+        newCategory.setVersion(LocalDateTime.now());
+        newCategory.setParent(parentCategory);
+
+        return productCategoryMapper.toDto(productCategoryRepository.save(newCategory));
     }
 }

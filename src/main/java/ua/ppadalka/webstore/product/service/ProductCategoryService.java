@@ -29,4 +29,6 @@ public interface ProductCategoryService {
     Optional<ProductCategory> findCategoryByName(String name);
 
     ProductCategoryDto create(ProductCategoryDto category);
+
+    ProductCategoryDto createSub(String parentName, ProductCategoryDto category);
 }

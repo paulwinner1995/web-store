@@ -43,4 +43,10 @@ public class ProductCategoryResource {
     public ResponseEntity<ProductCategoryDto> createCategory(@RequestBody ProductCategoryDto category) {
         return ResponseEntity.ok(productCategoryService.create(category));
     }
+
+    @PostMapping(path = "/{category}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<ProductCategoryDto> createSubCategory(@PathVariable(name = "category") String parentName,
+                                                                @RequestBody ProductCategoryDto categoryDto) {
+        return ResponseEntity.ok(productCategoryService.createSub(parentName, categoryDto));
+    }
 }
