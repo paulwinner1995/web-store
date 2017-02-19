@@ -54,7 +54,8 @@ public class ProductServiceImpl implements ProductService {
         Product product = productMapper.toModel(productInfo);
 
         ProductCategoryDto categoryDto = productInfo.getCategory();
-        ProductCategory category = productCategoryService.findCategoryByName(categoryDto.getName());
+        ProductCategory category = productCategoryService.findCategoryByName(categoryDto.getName())
+                .orElseThrow(RuntimeException::new);
 
         product.setProductCategory(category);
         product.setVersion(LocalDateTime.now());

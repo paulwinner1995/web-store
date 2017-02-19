@@ -10,6 +10,7 @@ import ua.ppadalka.webstore.product.repository.ProductCategoryRepository;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -41,8 +42,8 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
     }
 
     @Override
-    public ProductCategory findCategoryByName(String name) {
-        return productCategoryRepository.findByName(name);
+    public Optional<ProductCategory> findCategoryByName(String name) {
+        return Optional.ofNullable(productCategoryRepository.findByName(name));
     }
 
     @Override

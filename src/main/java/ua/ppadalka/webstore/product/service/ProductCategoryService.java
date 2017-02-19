@@ -4,6 +4,7 @@ import ua.ppadalka.webstore.product.dto.ProductCategoryDto;
 import ua.ppadalka.webstore.product.model.ProductCategory;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Provides methods for working with product categories
@@ -25,7 +26,7 @@ public interface ProductCategoryService {
      */
     List<ProductCategoryDto> findSubCategories(String category);
 
-    ProductCategory findCategoryByName(String name);
+    Optional<ProductCategory> findCategoryByName(String name);
 
     ProductCategoryDto create(ProductCategoryDto category);
 }
