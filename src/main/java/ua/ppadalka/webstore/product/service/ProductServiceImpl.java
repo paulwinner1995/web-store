@@ -59,6 +59,7 @@ public class ProductServiceImpl implements ProductService {
 
         product.setProductCategory(category);
         product.setVersion(LocalDateTime.now());
+        product.setAmount(0);
 
         UUID productCode = UUID.randomUUID();
 

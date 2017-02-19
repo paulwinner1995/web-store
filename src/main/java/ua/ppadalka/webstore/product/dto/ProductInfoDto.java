@@ -8,7 +8,6 @@ public class ProductInfoDto {
 
     @NotBlank
     private String name;
-    @NotBlank
     private Double price;
     private String description;
     private ProductCategoryDto category;
