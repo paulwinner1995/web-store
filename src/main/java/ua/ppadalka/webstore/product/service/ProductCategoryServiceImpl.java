@@ -39,7 +39,9 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 
     @Override
     public List<ProductCategoryDto> findSubCategories(String category) {
-        return Collections.emptyList();
+        return productCategoryRepository.findByParentName(category).stream()
+                .map(productCategoryMapper::toDto)
+                .collect(Collectors.toList());
     }
 
     @Override
