@@ -2,9 +2,13 @@ package ua.ppadalka.webstore.product.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -32,6 +36,10 @@ public class ProductDetail implements Serializable {
 
     @Column(name = "VALUE", nullable = false)
     private String value;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PRODUCT_ID")
+    private Product product;
 
     public ProductDetail() {
     }
@@ -70,11 +78,19 @@ public class ProductDetail implements Serializable {
         return value;
     }
 
+    public Product getProduct() {
+        return product;
+    }
+
     public void setProperty(String property) {
         this.property = property;
     }
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }

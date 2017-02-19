@@ -52,7 +52,11 @@ public class Product implements Serializable {
     )
     private ProductCategory productCategory;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(
+            mappedBy = "product",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
     private List<ProductDetail> productDetails;
 
     public Product() {}
