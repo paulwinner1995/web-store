@@ -13,6 +13,8 @@ import ua.ppadalka.webstore.product.dto.ProductDto;
 import ua.ppadalka.webstore.product.dto.ProductInfoDto;
 import ua.ppadalka.webstore.product.service.ProductService;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping(path = "/product")
 public class ProductResource {
@@ -31,7 +33,7 @@ public class ProductResource {
     }
 
     @PostMapping
-    public ResponseEntity<ProductInfoDto> create(@RequestBody ProductInfoDto productInfo) {
+    public ResponseEntity<ProductInfoDto> create(@Valid @RequestBody ProductInfoDto productInfo) {
         ProductInfoDto productInfoDto = productService.create(productInfo);
         return ResponseEntity.ok(productInfoDto);
     }

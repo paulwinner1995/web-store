@@ -1,10 +1,14 @@
 package ua.ppadalka.webstore.product.dto;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import java.util.List;
 
 public class ProductInfoDto {
 
+    @NotBlank
     private String name;
+    @NotBlank
     private Double price;
     private String description;
     private ProductCategoryDto category;
