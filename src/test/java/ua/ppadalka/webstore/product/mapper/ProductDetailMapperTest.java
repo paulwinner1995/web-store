@@ -24,6 +24,7 @@ public class ProductDetailMapperTest {
 
         productDetail.setProperty("brand");
         productDetail.setValue("Apple");
+
         // when
         ProductDetailDto productDetailDto = mapper.toDto(productDetail);
 

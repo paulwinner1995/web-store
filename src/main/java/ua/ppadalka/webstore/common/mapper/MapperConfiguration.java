@@ -20,6 +20,7 @@ public class MapperConfiguration {
         return Mappers.getMapper(ProductDetailMapper.class);
     }
 
+    @Bean
     public ProductMapper productMapper() {
         return Mappers.getMapper(ProductMapper.class);
     }

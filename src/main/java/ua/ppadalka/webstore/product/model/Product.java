@@ -101,4 +101,32 @@ public class Product implements Serializable {
     public ProductCategory getProductCategory() {
         return productCategory;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
+    public void setVersion(LocalDateTime version) {
+        this.version = version;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setProductCategory(ProductCategory productCategory) {
+        this.productCategory = productCategory;
+    }
 }
