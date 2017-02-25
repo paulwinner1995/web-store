@@ -1,13 +1,26 @@
 package ua.ppadalka.webstore.registration.dto;
 
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.Pattern;
+
 public class RegistrationForm {
+
+    @NotBlank
     private String username;
+    @NotBlank
     private String password;
+    @NotBlank
     private String confirmationPassword;
 
+    @NotBlank
     private String firstName;
+    @NotBlank
     private String lastName;
+    @NotBlank
     private String address;
+    @NotBlank
+    @Pattern(regexp = "^\\+(?:[0-9] ?){6,14}[0-9]$")
     private String phoneNumber;
 
     public RegistrationForm() {}
