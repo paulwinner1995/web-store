@@ -1,12 +1,14 @@
 package ua.ppadalka.webstore.registration.dto;
 
 import org.hibernate.validator.constraints.NotBlank;
+import ua.ppadalka.webstore.validator.constraints.UniqueUsername;
 
 import javax.validation.constraints.Pattern;
 
 public class RegistrationForm {
 
     @NotBlank
+    @UniqueUsername
     private String username;
     @NotBlank
     private String password;
