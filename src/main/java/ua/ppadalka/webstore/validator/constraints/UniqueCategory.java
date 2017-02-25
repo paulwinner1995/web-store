@@ -13,7 +13,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Constraint(validatedBy = UniqueCategoryValidator.class)
 public @interface UniqueCategory {
 
-    String message() default "{ua.ppadalka.webstore.validator.constraints.UniqueValue.message}";
+    String message() default "{ua.ppadalka.webstore.validator.constraints.UniqueCategory.message}";
 
     Class<?>[] groups() default { };
 
