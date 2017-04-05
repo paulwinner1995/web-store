@@ -30,8 +30,8 @@ public class ProductCategoryResource {
     }
 
     @GetMapping
-    public ResponseEntity<List<ProductCategoryDto>> findBasicCategories() {
-        return ResponseEntity.ok(productCategoryService.findBasicCategories());
+    public ResponseEntity<List<ProductCategoryDto>> findCategories() {
+        return ResponseEntity.ok(productCategoryService.findCategories());
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -42,11 +42,5 @@ public class ProductCategoryResource {
     @GetMapping(path = "/{category}")
     public ResponseEntity<List<ProductCategoryDto>> findSubCategories(@PathVariable(name = "category") String category) {
         return ResponseEntity.ok(productCategoryService.findSubCategories(category));
-    }
-
-    @PostMapping(path = "/{category}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<ProductCategoryDto> createSubCategory(@PathVariable(name = "category") String parentName,
-                                                                @Valid @RequestBody ProductCategoryDto categoryDto) {
-        return ResponseEntity.ok(productCategoryService.createSub(parentName, categoryDto));
     }
 }

@@ -14,9 +14,9 @@ public interface ProductCategoryService {
     /**
      * Looking for basic categories
      *
-     * @return - {@link List} of basic categories (which do not have parent category)
+     * @return - {@link List} of categories
      */
-    List<ProductCategoryDto> findBasicCategories();
+    List<ProductCategoryDto> findCategories();
 
     /**
      * Looking for sub categories
@@ -29,6 +29,4 @@ public interface ProductCategoryService {
     Optional<ProductCategory> findCategoryByName(String name);
 
     ProductCategoryDto create(ProductCategoryDto category);
-
-    ProductCategoryDto createSub(String parentName, ProductCategoryDto category);
 }
