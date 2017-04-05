@@ -14,6 +14,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import static org.apache.commons.lang3.StringUtils.EMPTY;
+
 @Service
 public class ProductCategoryServiceImpl implements ProductCategoryService {
 
@@ -52,6 +54,10 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
     public ProductCategoryDto create(ProductCategoryDto category) {
         ProductCategory productCategory = productCategoryMapper.toModel(category);
 
+        String parentName = category.getParentName();
+        ProductCategory parentCategory = productCategoryRepository.findByName(parentName);
+
+        productCategory.setParent(parentCategory);
         productCategory.setVersion(LocalDateTime.now());
 
         return productCategoryMapper.toDto(productCategoryRepository.save(productCategory));
