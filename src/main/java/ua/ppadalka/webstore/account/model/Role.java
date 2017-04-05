@@ -2,7 +2,7 @@ package ua.ppadalka.webstore.account.model;
 
 public enum Role {
 
-    SYSADMIN(1), SALESMANAGER(2), CUSTOMER(3);
+    SYSADMIN(1), ADMIN(2), CUSTOMER(3);
 
     private Integer id;
 
