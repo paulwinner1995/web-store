@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ua.ppadalka.webstore.product.dto.ProductCategoryDto;
 import ua.ppadalka.webstore.product.service.ProductCategoryService;
@@ -32,6 +33,11 @@ public class ProductCategoryResource {
     @GetMapping
     public ResponseEntity<List<ProductCategoryDto>> findCategories() {
         return ResponseEntity.ok(productCategoryService.findCategories());
+    }
+
+    @GetMapping(path = "/names")
+    public ResponseEntity<List<String>> findCategoryNames(@RequestParam(name = "example") String example) {
+        return ResponseEntity.ok(productCategoryService.findCategoryNamesByExample(example));
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)

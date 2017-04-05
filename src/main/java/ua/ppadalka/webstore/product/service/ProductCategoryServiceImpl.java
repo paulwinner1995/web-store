@@ -43,6 +43,13 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
     }
 
     @Override
+    public List<String> findCategoryNamesByExample(String example) {
+        return productCategoryRepository.findByNameContaining(example).stream()
+                .map(ProductCategory::getName)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public Optional<ProductCategory> findCategoryByName(String name) {
         return Optional.ofNullable(productCategoryRepository.findByName(name));
     }

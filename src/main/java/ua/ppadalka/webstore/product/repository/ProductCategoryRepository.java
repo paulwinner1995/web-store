@@ -10,4 +10,6 @@ public interface ProductCategoryRepository extends CrudRepository<ProductCategor
     ProductCategory findByName(String name);
 
     List<ProductCategory> findByParentName(String name);
+
+    List<ProductCategory> findByNameContaining(String example);
 }

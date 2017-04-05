@@ -26,6 +26,8 @@ public interface ProductCategoryService {
      */
     List<ProductCategoryDto> findSubCategories(String category);
 
+    List<String> findCategoryNamesByExample(String example);
+
     Optional<ProductCategory> findCategoryByName(String name);
 
     ProductCategoryDto create(ProductCategoryDto category);
