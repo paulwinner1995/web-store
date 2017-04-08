@@ -55,7 +55,7 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
     }
 
     @Override
-    public ProductCategoryDto create(ProductCategoryDto category) {
+    public ProductCategoryDto save(ProductCategoryDto category) {
         ProductCategory productCategory = productCategoryMapper.toModel(category);
 
         String parentName = category.getParentName();

@@ -1,33 +1,40 @@
 package ua.ppadalka.webstore.product.resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ua.ppadalka.webstore.product.dto.ProductCategoryDto;
+import ua.ppadalka.webstore.product.mapper.ProductCategoryMapper;
 import ua.ppadalka.webstore.product.service.ProductCategoryService;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping(
-        path = "/category",
-        produces = MediaType.APPLICATION_JSON_UTF8_VALUE
+@RequestMapping(path = "/category",
+        produces = MediaType.APPLICATION_JSON_UTF8_VALUE,
+        consumes = MediaType.APPLICATION_JSON_UTF8_VALUE
 )
 public class ProductCategoryResource {
 
-    private ProductCategoryService productCategoryService;
+    private final ProductCategoryService productCategoryService;
+    private final ProductCategoryMapper categoryMapper;
 
     @Autowired
-    public ProductCategoryResource(ProductCategoryService productCategoryService) {
-        this.productCategoryService = productCategoryService;
+    public ProductCategoryResource(ProductCategoryService categoryService,
+                                   ProductCategoryMapper categoryMapper) {
+        this.productCategoryService = categoryService;
+        this.categoryMapper = categoryMapper;
     }
 
     @GetMapping
@@ -40,13 +47,25 @@ public class ProductCategoryResource {
         return ResponseEntity.ok(productCategoryService.findCategoryNamesByExample(example));
     }
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<ProductCategoryDto> createCategory(@Valid @RequestBody ProductCategoryDto category) {
-        return ResponseEntity.ok(productCategoryService.create(category));
+    @GetMapping(path = "/{name}")
+    public ResponseEntity<ProductCategoryDto> findCategory(@PathVariable("name") String name) {
+        Optional<ProductCategoryDto> productCategoryDto = productCategoryService.findCategoryByName(name)
+                .map(categoryMapper::toDto);
+
+        if (!productCategoryDto.isPresent()) {
+            return ResponseEntity.status(HttpStatus.GONE).body(new ProductCategoryDto());
+        }
+
+        return ResponseEntity.ok(productCategoryDto.get());
     }
 
-    @GetMapping(path = "/{category}")
-    public ResponseEntity<List<ProductCategoryDto>> findSubCategories(@PathVariable(name = "category") String category) {
-        return ResponseEntity.ok(productCategoryService.findSubCategories(category));
+    @PostMapping
+    public ResponseEntity<ProductCategoryDto> createCategory(@Valid @RequestBody ProductCategoryDto category) {
+        return ResponseEntity.ok(productCategoryService.save(category));
+    }
+
+    @PutMapping
+    public ResponseEntity<ProductCategoryDto> updateCategory(@Valid @RequestBody ProductCategoryDto category) {
+        return ResponseEntity.ok(productCategoryService.save(category));
     }
 }

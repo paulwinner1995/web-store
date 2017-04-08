@@ -30,5 +30,5 @@ public interface ProductCategoryService {
 
     Optional<ProductCategory> findCategoryByName(String name);
 
-    ProductCategoryDto create(ProductCategoryDto category);
+    ProductCategoryDto save(ProductCategoryDto category);
 }
