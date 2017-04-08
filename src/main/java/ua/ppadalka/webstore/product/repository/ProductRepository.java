@@ -13,5 +13,5 @@ public interface ProductRepository extends PagingAndSortingRepository<Product, L
 
     Optional<Product> findByCode(String code);
 
-    Page<ProductProj> findPage(Pageable pageable);
+    Page<ProductProj> findAllProjectedBy(Pageable pageable);
 }

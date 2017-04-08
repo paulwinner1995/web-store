@@ -39,7 +39,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Page<ProductProj> findPage(Pageable pageable) {
-        return productRepository.findPage(pageable);
+        return productRepository.findAllProjectedBy(pageable);
     }
 
     @Override
