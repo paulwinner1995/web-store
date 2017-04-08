@@ -21,10 +21,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "/category",
-        produces = MediaType.APPLICATION_JSON_UTF8_VALUE,
-        consumes = MediaType.APPLICATION_JSON_UTF8_VALUE
-)
+@RequestMapping(path = "/category", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class ProductCategoryResource {
 
     private final ProductCategoryService productCategoryService;
