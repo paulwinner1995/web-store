@@ -1,12 +1,10 @@
 package ua.ppadalka.webstore.product.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import ua.ppadalka.webstore.product.dto.ProductCategoryDto;
-import ua.ppadalka.webstore.product.dto.ProductDto;
 import ua.ppadalka.webstore.product.dto.ProductInfoDto;
 import ua.ppadalka.webstore.product.exception.ProductNotFoundException;
 import ua.ppadalka.webstore.product.mapper.ProductDetailMapper;
@@ -14,6 +12,7 @@ import ua.ppadalka.webstore.product.mapper.ProductMapper;
 import ua.ppadalka.webstore.product.model.Product;
 import ua.ppadalka.webstore.product.model.ProductCategory;
 import ua.ppadalka.webstore.product.model.ProductDetail;
+import ua.ppadalka.webstore.product.projection.ProductProj;
 import ua.ppadalka.webstore.product.repository.ProductRepository;
 
 import java.time.LocalDateTime;
@@ -39,10 +38,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<ProductDto> findProductPage(Pageable pageable) {
-        Example<Product> productExample = Example.of(new Product());
-        return productRepository.findAll(productExample, pageable)
-                .map(productMapper::toDto);
+    public Page<ProductProj> findPage(Pageable pageable) {
+        return productRepository.findPage(pageable);
     }
 
     @Override

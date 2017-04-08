@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ua.ppadalka.webstore.product.dto.ProductDto;
 import ua.ppadalka.webstore.product.dto.ProductInfoDto;
+import ua.ppadalka.webstore.product.projection.ProductProj;
 import ua.ppadalka.webstore.product.service.ProductService;
 
 import javax.validation.Valid;
@@ -28,8 +28,8 @@ public class ProductResource {
     }
 
     @GetMapping
-    public ResponseEntity<Page<ProductDto>> findProductPage(Pageable pageable) {
-        return ResponseEntity.ok(productService.findProductPage(pageable));
+    public ResponseEntity<Page<ProductProj>> findProductPage(Pageable pageable) {
+        return ResponseEntity.ok(productService.findPage(pageable));
     }
 
     @PostMapping
