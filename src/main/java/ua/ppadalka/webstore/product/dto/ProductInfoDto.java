@@ -2,6 +2,7 @@ package ua.ppadalka.webstore.product.dto;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductInfoDto {
@@ -13,7 +14,9 @@ public class ProductInfoDto {
     private ProductCategoryDto category;
     private List<ProductDetailDto> details;
 
-    public ProductInfoDto() {}
+    public ProductInfoDto() {
+        this.details = new ArrayList<>();
+    }
 
     public String getName() {
         return name;
