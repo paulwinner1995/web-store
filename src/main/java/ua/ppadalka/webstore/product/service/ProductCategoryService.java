@@ -1,5 +1,7 @@
 package ua.ppadalka.webstore.product.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import ua.ppadalka.webstore.product.dto.ProductCategoryDto;
 import ua.ppadalka.webstore.product.model.ProductCategory;
 
@@ -12,19 +14,12 @@ import java.util.Optional;
 public interface ProductCategoryService {
 
     /**
-     * Looking for basic categories
+     * Looking for page of categories
      *
+     * @param  - {@link Pageable} page request
      * @return - {@link List} of categories
      */
-    List<ProductCategoryDto> findCategories();
-
-    /**
-     * Looking for sub categories
-     *
-     * @param category - parent category
-     * @return - {@link List} of categories which are subcategories of given category
-     */
-    List<ProductCategoryDto> findSubCategories(String category);
+    Page<ProductCategoryDto> findCategories(Pageable pageable);
 
     List<String> findCategoryNamesByExample(String example);
 

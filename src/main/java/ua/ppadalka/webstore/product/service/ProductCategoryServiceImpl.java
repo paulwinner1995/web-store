@@ -1,6 +1,8 @@
 package ua.ppadalka.webstore.product.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import ua.ppadalka.webstore.product.dto.ProductCategoryDto;
 import ua.ppadalka.webstore.product.mapper.ProductCategoryMapper;
@@ -11,7 +13,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @Service
 public class ProductCategoryServiceImpl implements ProductCategoryService {
@@ -27,19 +28,8 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
     }
 
     @Override
-    public List<ProductCategoryDto> findCategories() {
-        Iterable<ProductCategory> productCategories = productCategoryRepository.findAll();
-
-        return StreamSupport.stream(productCategories.spliterator(), false)
-                .map(productCategoryMapper::toDto)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<ProductCategoryDto> findSubCategories(String category) {
-        return productCategoryRepository.findByParentName(category).stream()
-                .map(productCategoryMapper::toDto)
-                .collect(Collectors.toList());
+    public Page<ProductCategoryDto> findCategories(Pageable pageable) {
+        return productCategoryRepository.findAll(pageable).map(productCategoryMapper::toDto);
     }
 
     @Override

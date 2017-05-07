@@ -1,6 +1,8 @@
 package ua.ppadalka.webstore.product.resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -35,25 +37,13 @@ public class ProductCategoryResource {
     }
 
     @GetMapping
-    public ResponseEntity<List<ProductCategoryDto>> findCategories() {
-        return ResponseEntity.ok(productCategoryService.findCategories());
+    public ResponseEntity<Page<ProductCategoryDto>> findCategories(Pageable pageable) {
+        return ResponseEntity.ok(productCategoryService.findCategories(pageable));
     }
 
     @GetMapping(path = "/names")
     public ResponseEntity<List<String>> findCategoryNames(@RequestParam(name = "example") String example) {
         return ResponseEntity.ok(productCategoryService.findCategoryNamesByExample(example));
-    }
-
-    @GetMapping(path = "/{name}")
-    public ResponseEntity<ProductCategoryDto> findCategory(@PathVariable("name") String name) {
-        Optional<ProductCategoryDto> productCategoryDto = productCategoryService.findCategoryByName(name)
-                .map(categoryMapper::toDto);
-
-        if (!productCategoryDto.isPresent()) {
-            return ResponseEntity.status(HttpStatus.GONE).body(new ProductCategoryDto());
-        }
-
-        return ResponseEntity.ok(productCategoryDto.get());
     }
 
     @PostMapping
