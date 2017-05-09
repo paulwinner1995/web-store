@@ -37,8 +37,8 @@ public class ProductResource {
         return ResponseEntity.ok(productService.create(productInfo));
     }
 
-    @GetMapping(path = "/{xref}")
-    public ResponseEntity<ProductInfoDto> findProductInfo(@PathVariable(name = "xref") String xref) {
-        return ResponseEntity.ok(productService.findProductInfo(xref));
+    @GetMapping(path = "/{code}")
+    public ResponseEntity<ProductInfoDto> findProductInfo(@PathVariable(name = "code") String code) {
+        return ResponseEntity.ok(productService.findProductInfo(code));
     }
 }

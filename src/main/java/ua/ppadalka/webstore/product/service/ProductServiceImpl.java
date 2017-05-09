@@ -72,9 +72,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductInfoDto findProductInfo(String xref) {
-        Product product = productRepository.findByCode(xref)
-                .orElseThrow(() -> new ProductNotFoundException(xref));
+    public ProductInfoDto findProductInfo(String code) {
+        Product product = productRepository.findByCode(code)
+                .orElseThrow(() -> new ProductNotFoundException(code));
 
         return productMapper.toInfoDto(product);
     }
