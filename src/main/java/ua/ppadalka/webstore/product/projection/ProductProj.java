@@ -9,4 +9,6 @@ public interface ProductProj {
     Double getAmount();
 
     Integer getPrice();
+
+    String getDescription();
 }
